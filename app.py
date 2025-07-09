@@ -17,8 +17,8 @@ class Record(db.Model):
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(200), nullable=False)
 
-@app.before_first_request
-def create_db():
+# Crear tablas automáticamente al iniciar la app
+with app.app_context():
     db.create_all()
 
 @app.route('/')
